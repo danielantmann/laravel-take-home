@@ -3,7 +3,7 @@ import axios from "axios";
 import { Head } from "@inertiajs/react";
 
 export default function Remix() {
-    const MAX_CHARS = 240;
+    const MAX_CHARS = 280;
 
     const [text, setText] = useState("");
     const [variants, setVariants] = useState([]);

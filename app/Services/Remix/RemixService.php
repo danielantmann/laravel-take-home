@@ -22,6 +22,55 @@ class RemixService
         // - Combine them with the original text
         // - Ensure the resulting string is <= 280 chars
 
-        return [$text, $text, $text, $text];
+        $normalPrefixes = [
+            "Hey ",
+            "Tip: ",
+            "Note: ",
+            "Alert: ",
+        ];
+
+        $tinyPrefixes = [
+            "·",
+            "→",
+            "✓",
+            "★",
+        ];
+
+        $suffixes = [
+            " Check.",
+            " Go.",
+            " Why?",
+            " Share.",
+        ];
+
+        $variants = [];
+
+        for ($i = 0; $i < 4; $i++) {
+
+            $variant = trim($normalPrefixes[$i] . " " . $text . " " . $suffixes[$i]);
+
+            if (mb_strlen($variant) <= 280) {
+                $variants[] = $variant;
+                continue;
+            }
+
+            $variant = trim($normalPrefixes[$i] . " " . $text);
+
+            if (mb_strlen($variant) <= 280) {
+                $variants[] = $variant;
+                continue;
+            }
+
+            $variant = $tinyPrefixes[$i] . " " . $text;
+
+            if (mb_strlen($variant) <= 280) {
+                $variants[] = $variant;
+                continue;
+            }
+
+            $variants[] = $text;
+        }
+
+        return $variants;
     }
 }
