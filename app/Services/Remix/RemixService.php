@@ -23,10 +23,10 @@ class RemixService
         // - Ensure the resulting string is <= 280 chars
 
         $normalPrefixes = [
-            "Hey ",
-            "Tip: ",
-            "Note: ",
-            "Alert: ",
+            "Hey",
+            "Tip:",
+            "Note:",
+            "Alert:",
         ];
 
         $tinyPrefixes = [
